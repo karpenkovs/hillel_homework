@@ -1,6 +1,6 @@
 package less07;
 
-public class spiralUlam {
+public class SpiralUlam {
     public static void main(String[] args) {
 
         int[][] spiral = new int[6][6];

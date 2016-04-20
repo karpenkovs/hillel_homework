@@ -2,7 +2,7 @@ package less04;
 
 public class Task09 {
     public static void main(String[] args) {
-        int num = 71;
+        int num = 66;
         String numDouble = "";
 
         while (num != 0) {
