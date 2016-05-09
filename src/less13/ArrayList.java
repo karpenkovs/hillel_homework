@@ -122,7 +122,6 @@ public class ArrayList implements List {
 
     public Iterator randomIterator() {
         return new RandomIterator();
-        //return new RandomIterator(array);
     }
 
     private class ListIterator implements Iterator {
@@ -159,13 +158,7 @@ public class ArrayList implements List {
             for (int i = 0; i < current; i++) {
                 randomArray[i] = array[i];
             }
-
         }
-
-       /* RandomIterator(String[] arr) {
-            current = size;
-            randomArray = arr;
-        }*/
 
         @Override
         public boolean hasNext() {
