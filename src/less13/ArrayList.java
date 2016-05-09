@@ -121,7 +121,8 @@ public class ArrayList implements List {
     }
 
     public Iterator randomIterator() {
-        return new RandomIterator(array);
+        return new RandomIterator();
+        //return new RandomIterator(array);
     }
 
     private class ListIterator implements Iterator {
@@ -129,11 +130,11 @@ public class ArrayList implements List {
         private int current = 0;
 
         public boolean hasNext() {
-            if (current > size) {
-                return false;
+            if (current < size) {
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public Object next() {
@@ -145,19 +146,30 @@ public class ArrayList implements List {
 
     private class RandomIterator implements Iterator {
 
-        private Random random;
+        private Random random = new Random();
         private String[] randomArray;
-        int randomSize;
+        int current;
+        int index;
+        String str;
 
-        RandomIterator(String[] array) {
-            random = new Random();
-            randomArray = array;
-            randomSize = size;
+        RandomIterator() {
+            current = size;
+            randomArray = new String[current];
+
+            for (int i = 0; i < current; i++) {
+                randomArray[i] = array[i];
+            }
+
         }
+
+       /* RandomIterator(String[] arr) {
+            current = size;
+            randomArray = arr;
+        }*/
 
         @Override
         public boolean hasNext() {
-            if (randomSize > 0) {
+            if (current > 0) {
                 return true;
             } else {
                 return false;
@@ -166,25 +178,20 @@ public class ArrayList implements List {
 
         @Override
         public Object next() {
-            int index = random.nextInt(randomSize);
-            String str = randomArray[index];
-            overWriteRandomArray(index);
-            randomSize--;
+            index = random.nextInt(current);
+            str = randomArray[index];
+            overwriteRandomArray(index);
+            current--;
             return str;
         }
 
-        private void overWriteRandomArray(int index) {
-            String[] temp = new String[randomSize - 1];
+        private void overwriteRandomArray(int index) {
 
-            //if()
-            for (int i = 0; i < index; i++) {
-                temp[i] = randomArray[i];
+            for (int i = index; i < current - 1; i++) {
+                randomArray[i] = randomArray[i + 1];
             }
 
-            for (int i = index; i < temp.length; i++) {
-                temp[i] = randomArray[i + 1];
-            }
-            randomArray = temp;
+
         }
 
 

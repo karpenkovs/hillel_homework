@@ -30,6 +30,7 @@ public class Test {
 
         System.out.println();
         System.out.println("Random iterator:");
+
         Iterator rit = list.randomIterator();
         while (rit.hasNext()){
             System.out.println("Element: " + rit.next());

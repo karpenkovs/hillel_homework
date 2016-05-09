@@ -27,6 +27,7 @@ public interface List {
     Iterator listIterator();
 
     Iterator backwardIterator();
-    public Iterator randomIterator();
+
+    Iterator randomIterator();
 
 }
